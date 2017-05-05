@@ -1,0 +1,17 @@
+
+lazy val root = (project in file("."))
+  .settings(
+    name         := "valet-flyway",
+    version := "0.0.1",
+    scalaVersion := "2.11.8",
+    libraryDependencies ++= Seq(
+      "mysql" % "mysql-connector-java" % "5.1.40",
+      "org.flywaydb" % "flyway-core" % "4.0",
+      "org.flywaydb" % "flyway-sbt" % "4.1.2"
+    ),
+    flywayUrl := "jdbc:mysql://127.0.0.1/test?characterEncoding=UTF8&autoReconnect=true&useSSL=false",
+    flywayUser := "test",
+    flywayPassword := "test",
+    flywayDriver := "com.mysql.jdbc.Driver",
+    flywayLocations := Seq("filesystem:conf/db/migration/default")
+  )
